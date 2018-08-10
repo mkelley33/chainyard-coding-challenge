@@ -119,8 +119,7 @@ app.use(
   })),
 );
 
-// Mount api routes on /api/v1 path.
-app.use('/api/', apiRouter);
+app.use('/api', apiRouter);
 
 //
 // Register server-side rendering middleware
