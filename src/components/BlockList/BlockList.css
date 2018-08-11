@@ -1,0 +1,13 @@
+h3 {
+  font-size: 1.2rem;
+
+  a:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+}
+
+.breakWord {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
