@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import api from '../../api/client/api';
 
 class BlockForm extends Component {
   constructor(props) {
@@ -29,19 +30,23 @@ class BlockForm extends Component {
     event.preventDefault();
     this.setState({ block: {} });
   }
-  onClickGetLatestBlock(event) {
-    event.preventDefault();
-    this.setState({ block: {} });
+  onClickGetLatestBlock() {
+    api
+      .getLatestBlock()
+      .then(res => {
+        this.setState({ block: res.data });
+      })
+      .catch(err => {
+        throw Error(err);
+      });
   }
   render() {
+    const block = JSON.stringify(this.state.block);
     return (
       <div>
         <form onSubmit={this.onSubmit}>
           <span>Find by:</span>
           <button onClick={this.onClickBlockHash}>Block Hash</button>
-          <button onClick={this.onClickTransactionHash}>
-            Transaction Hash
-          </button>
           <input
             type="text"
             onChange={this.onChangeHash}
@@ -54,7 +59,7 @@ class BlockForm extends Component {
             </button>
           </div>
         </form>
-        <div>{this.state.block}</div>
+        <div>{block}</div>
       </div>
     );
   }
