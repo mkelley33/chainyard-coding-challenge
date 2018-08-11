@@ -4,6 +4,6 @@ import transactionService from '../services/transaction';
 
 const router = express.Router(); // eslint-disable-line new-cap
 
-router.route('/:hash').get(transactionService.getByHash);
+router.route('/:transactionIndex').get(transactionService.getByIndex);
 
 export default router;
