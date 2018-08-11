@@ -20,6 +20,11 @@ const routes = {
       load: () => import(/* webpackChunkName: 'home' */ './home'),
     },
     {
+      path: '/blocks/:hash',
+      load: () =>
+        import(/* webpackChunkName: 'block-detail' */ './block-detail'),
+    },
+    {
       path: '/contact',
       load: () => import(/* webpackChunkName: 'contact' */ './contact'),
     },
