@@ -14,8 +14,16 @@
 }
 
 .root {
-  background: #373277;
+  display: flex;
+  background:
+    linear-gradient(
+      to top,
+      color(#2eb85e lightness(-8%)) 10%,
+      #2eb85e
+    );
   color: #fff;
+  text-shadow: 2px 3px 3px color(var(--header-background-color) lightness(-10%));
+  box-shadow: 0 3px 5px color(#000 lightness(70%));
 }
 
 .container {
@@ -34,21 +42,8 @@
   margin-left: 10px;
 }
 
-.banner {
-  text-align: center;
-}
-
-.bannerTitle {
-  margin: 0;
-  padding: 10px;
-  font-weight: normal;
-  font-size: 4em;
-  line-height: 1em;
-}
-
-.bannerDesc {
-  padding: 0;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 1.25em;
-  margin: 0;
+.chain {
+  float: left;
+  width: 240px;
+  height: 42px;
 }
