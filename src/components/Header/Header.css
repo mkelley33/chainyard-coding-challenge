@@ -15,6 +15,8 @@
 
 .root {
   display: flex;
+
+  /* var(--header-background-color) only sometimes works with color function */
   background:
     linear-gradient(
       to top,
@@ -22,7 +24,7 @@
       #2eb85e
     );
   color: #fff;
-  text-shadow: 2px 3px 3px color(var(--header-background-color) lightness(-10%));
+  text-shadow: 2px 3px 3px color(#2eb85e lightness(-10%));
   box-shadow: 0 3px 5px color(#000 lightness(70%));
 }
 
@@ -44,6 +46,12 @@
 
 .chain {
   float: left;
-  width: 240px;
+  width: 160px;
   height: 42px;
 }
+
+a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+

@@ -49,6 +49,10 @@ class Html extends React.Component {
           ))}
           <link rel="manifest" href="/site.webmanifest" />
           <link rel="apple-touch-icon" href="/icon.png" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+          />
           {styles.map(style => (
             <style
               key={style.id}
@@ -58,7 +62,11 @@ class Html extends React.Component {
           ))}
         </head>
         <body>
-          <div id="app" dangerouslySetInnerHTML={{ __html: children }} />
+          <main
+            id="app"
+            aria-roledescription="main"
+            dangerouslySetInnerHTML={{ __html: children }}
+          />
           <script
             dangerouslySetInnerHTML={{ __html: `window.App=${serialize(app)}` }}
           />
