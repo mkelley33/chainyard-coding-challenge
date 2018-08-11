@@ -8,6 +8,12 @@ export default {
       .then(resp => res.json(resp.data))
       .catch(e => next(e));
   },
+  getAllForOneDay(req, res, next) {
+    return axios
+      .get(`${BASE_API_URL}blocks/?format=json&cors=true`)
+      .then(resp => res.json(resp.data))
+      .catch(e => next(e));
+  },
   getLatest(req, res, next) {
     return axios
       .get(`${BASE_API_URL}latestblock`)
