@@ -37,6 +37,11 @@ const routes = {
       load: () => import(/* webpackChunkName: 'register' */ './register'),
     },
     {
+      path: '/transactions/:hash',
+      load: () =>
+        import(/* webpackChunkName: 'transaction-detail' */ './transaction-detail'),
+    },
+    {
       path: '/about',
       load: () => import(/* webpackChunkName: 'about' */ './about'),
     },

@@ -9,7 +9,7 @@ export default {
   getLatestBlock() {
     return axios.get(`${API_URL}/blocks/latest`);
   },
-  getByHash(hash) {
-    return axios.get(`${API_URL}/blocks/${hash}`);
+  getByHash(hash, entities = 'blocks') {
+    return axios.get(`${API_URL}/${entities}/${hash}`);
   },
 };
