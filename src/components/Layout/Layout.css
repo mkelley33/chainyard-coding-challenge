@@ -33,7 +33,14 @@ body {
 
 a {
   color: #0074c2;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
+
+strong { font-weight: bold; }
 
 /*
  * Remove text-shadow in selection highlight:

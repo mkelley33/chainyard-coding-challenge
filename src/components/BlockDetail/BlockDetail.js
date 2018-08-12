@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import withStyles from 'isomorphic-style-loader/lib/withStyles';
+
+import s from '../Page/Page.css';
+import Link from '../Link';
 import api from '../../api/client/api';
 
 class BlockDetail extends Component {
@@ -23,14 +27,116 @@ class BlockDetail extends Component {
         throw Error(err);
       });
   }
-  render() {
+  static renderDetail(block) {
+    if (!block) return <div>Loading...</div>;
+    /* eslint-disable camelcase */
+    const {
+      ver,
+      prev_block,
+      mrkl_root,
+      time,
+      bits,
+      nonce,
+      n_tx,
+      size,
+      block_index,
+      main_chain,
+      height,
+      received_time,
+      relayed_by,
+      tx,
+    } = { ...block };
+    return (
+      <ul>
+        <li>
+          <strong>Version: </strong>
+          {ver}
+        </li>
+        <li className={s.breakWord}>
+          <strong>Previous Block: </strong>
+          {prev_block}
+        </li>
+        <li className={s.breakWord}>
+          <strong>MRKL Root: </strong>
+          {mrkl_root}
+        </li>
+        <li>
+          <strong>Time: </strong>
+          {time}
+        </li>
+        <li>
+          <strong>Bits: </strong>
+          {bits}
+        </li>
+        <li>
+          <strong>Nonce: </strong>
+          {nonce}
+        </li>
+        <li>
+          <strong>Number of Transactions: </strong>
+          {n_tx}
+        </li>
+        <li>
+          <strong>Size: </strong>
+          {size}
+        </li>
+        <li>
+          <strong>Block Index: </strong>
+          {block_index}
+        </li>
+        <li>
+          <strong>Main Chain: </strong>
+          {main_chain}
+        </li>
+        <li>
+          <strong>Height: </strong>
+          {height}
+        </li>
+        <li>
+          <strong>Received Time: </strong>
+          {received_time}
+        </li>
+        <li>
+          <strong>Relayed by: </strong>
+          {relayed_by}
+        </li>
+        <li>{BlockDetail.renderTransactions(tx)}</li>
+      </ul>
+    );
+    /* eslint-enable camelcase */
+  }
+  static renderTransactions(transactions) {
+    if (!transactions) return <div>No Transactions</div>;
     return (
       <section>
-        <h2>Block: {this.props.hash}</h2>
-        {JSON.stringify(this.state.block)}
+        <h3>Transactions</h3>
+        <ul>
+          {transactions.map(transaction => (
+            <li key={transaction.hash}>
+              <Link
+                className={s.breakWord}
+                to={`/transactions/${transaction.hash}`}
+              >
+                {transaction.hash}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </section>
+    );
+  }
+  render() {
+    return (
+      <div className={s.root}>
+        <div className={s.container}>
+          <section>
+            <h2 className={s.breakWord}>Block: {this.props.hash}</h2>
+            {BlockDetail.renderDetail(this.state.block)}
+          </section>
+        </div>
+      </div>
     );
   }
 }
 
-export default BlockDetail;
+export default withStyles(s)(BlockDetail);
