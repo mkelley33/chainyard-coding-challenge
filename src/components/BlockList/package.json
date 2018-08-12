@@ -1,0 +1,6 @@
+{
+  "name": "BlockList",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./BlockList.js"
+}
