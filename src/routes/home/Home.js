@@ -10,7 +10,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
-import BlockForm from '../../components/BlockForm';
+import Link from '../../components/Link';
 import BlockList from '../../components/BlockList';
 
 class Home extends React.Component {
@@ -18,7 +18,9 @@ class Home extends React.Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <BlockForm />
+          <div>
+            <Link to="/blocks/latest">Get Latest Block</Link>
+          </div>
           <BlockList />
         </div>
       </div>

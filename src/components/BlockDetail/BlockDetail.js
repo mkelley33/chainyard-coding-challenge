@@ -8,7 +8,10 @@ import api from '../../api/client/api';
 
 class BlockDetail extends Component {
   static propTypes = {
-    hash: PropTypes.string.isRequired,
+    hash: PropTypes.string,
+  };
+  static defaultProps = {
+    hash: '',
   };
   constructor(props) {
     super(props);
@@ -18,14 +21,25 @@ class BlockDetail extends Component {
     this.fetchBlock();
   }
   fetchBlock() {
-    api
-      .getByHash(this.props.hash)
-      .then(res => {
-        this.setState({ block: res.data });
-      })
-      .catch(err => {
-        throw Error(err);
-      });
+    if (this.props.hash) {
+      api
+        .getByHash(this.props.hash)
+        .then(res => {
+          this.setState({ block: res.data });
+        })
+        .catch(err => {
+          throw Error(err);
+        });
+    } else {
+      api
+        .getLatestBlock()
+        .then(res => {
+          this.setState({ block: res.data });
+        })
+        .catch(err => {
+          throw Error(err);
+        });
+    }
   }
   static renderDetail(block) {
     if (!block) return <div>Loading...</div>;
@@ -130,7 +144,9 @@ class BlockDetail extends Component {
       <div className={s.root}>
         <div className={s.container}>
           <section>
-            <h2 className={s.breakWord}>Block: {this.props.hash}</h2>
+            <h2 className={s.breakWord}>
+              {!this.props.hash ? 'Latest ' : ''}Block: {this.props.hash}
+            </h2>
             {BlockDetail.renderDetail(this.state.block)}
           </section>
         </div>
