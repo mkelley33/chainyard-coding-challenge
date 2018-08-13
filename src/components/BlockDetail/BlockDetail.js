@@ -143,6 +143,9 @@ class BlockDetail extends Component {
     return (
       <div className={s.root}>
         <div className={s.container}>
+          <div>
+            <Link to="/">Back to Blocks</Link>
+          </div>
           <section>
             <h2 className={s.breakWord}>
               {!this.props.hash ? 'Latest ' : ''}Block: {this.props.hash}
