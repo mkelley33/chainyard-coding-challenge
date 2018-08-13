@@ -26,6 +26,7 @@
   color: #fff;
   text-shadow: 2px 3px 3px color(#2eb85e lightness(-10%));
   box-shadow: 0 3px 5px color(#000 lightness(70%));
+  margin-bottom: 2rem;
 
   a:hover {
     color: #fff;
