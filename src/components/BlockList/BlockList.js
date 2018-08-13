@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import api from '../../api/client/api';
 import Link from '../Link/Link';
-import s from './BlockList.css';
+import s from '../Page/Page.css';
 
 class BlockList extends Component {
   constructor(props) {
@@ -28,7 +28,7 @@ class BlockList extends Component {
         Hash:
         <span>
           <Link to={`/blocks/${hash}`} className={s.breakWord}>
-            {hash}
+            {` ${hash}`}
           </Link>
         </span>
       </h3>
@@ -54,16 +54,18 @@ class BlockList extends Component {
   }
   render() {
     return (
-      <section>
-        <h2>Blocks: Today</h2>
-        {!this.state.blocks.length ? (
-          <div>Loading...</div>
-        ) : (
-          <ul>
-            {this.state.blocks.map(block => BlockList.renderListItem(block))}
-          </ul>
-        )}
-      </section>
+      <div className={s.root}>
+        <section className={s.container}>
+          <h2>Blocks: Today</h2>
+          {!this.state.blocks.length ? (
+            <div>Loading...</div>
+          ) : (
+            <ul>
+              {this.state.blocks.map(block => BlockList.renderListItem(block))}
+            </ul>
+          )}
+        </section>
+      </div>
     );
   }
 }

@@ -24,3 +24,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+
+h3 {
+  font-size: 1.2rem;
+}
